@@ -1,13 +1,26 @@
 Rails3Scopes
 ============
 
-Introduction goes here.
+Rails 3 like scopes for Rails 2.X.X
+
+Plugin adds following scopes:
+
+named_scope :where, lambda{ |conditions| { :conditions => conditions } }
+named_scope :order, lambda{ |order| { :order => order } }
+named_scope :limit, lambda{ |n| { :limit => n } }
+named_scope :include, lambda{ |i| { :include => i } }
 
 
 Example
 =======
 
-Example goes here.
+User.all(:conditions => { :name => "Vlado" }, :order => "name", :limit => 5)
 
+can now be written like
 
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+User.where(:name => "Vlado").order("name").limit(5).all
+
+Licence
+=======
+
+Copyright (c) 2010 Vlado Cingel, released under the MIT license
